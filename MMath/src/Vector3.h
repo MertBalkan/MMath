@@ -23,9 +23,9 @@ namespace MMath {
 		Vector3(float xValue_, float yValue_, float zValue_) : xValue(xValue_), yValue(yValue_), zValue(zValue_) { }
 		~Vector3();
 
-		float getX() { return xValue; }
-		float getY() { return yValue; }
-		float getZ() { return zValue; }
+		float getX() const { return xValue; }
+		float getY() const { return yValue; }
+		float getZ() const { return zValue; }
 
 		void setX(float x_) { this->xValue = x_; }
 		void setY(float y_) { this->yValue = y_; }
@@ -43,11 +43,13 @@ namespace MMath {
 		Vector3 cross(Vector3& vector) const;
 
 		Vector3 operator+  (const Vector3& vector) const;
-		Vector3 operator!= (const Vector3& vector) const;
 		Vector3 operator-  (const Vector3& vector) const;
 		Vector3 operator*  (const Vector3& vector) const;
 		Vector3 operator/  (const Vector3& vector) const;
-		Vector3 operator== (const Vector3& vector) const;
+
+		bool operator== (const Vector3& vector) const;
+		bool operator!= (const Vector3& vector) const;
+
 		friend std::ostream& operator<<(std::ostream& os, Vector3& vectorValue);
 
 	private:

@@ -66,10 +66,6 @@ MMath::Vector3 MMath::Vector3::operator+(const Vector3& vector) const
     return resultVector;
 }
 
-MMath::Vector3 MMath::Vector3::operator!=(const Vector3& vector) const
-{
-    return Vector3();
-}
 
 MMath::Vector3 MMath::Vector3::operator-(const Vector3& vector) const
 {
@@ -90,12 +86,25 @@ MMath::Vector3 MMath::Vector3::operator*(const Vector3& vector) const
 
 MMath::Vector3 MMath::Vector3::operator/(const Vector3& vector) const
 {
-    return Vector3();
+    Vector3 resultVector;
+
+    resultVector.setX(this->xValue / vector.xValue);
+    resultVector.setY(this->yValue / vector.yValue);
+    resultVector.setZ(this->zValue / vector.zValue);
+
+    return resultVector;
 }
 
-MMath::Vector3 MMath::Vector3::operator==(const Vector3& vector) const
+bool MMath::Vector3::operator==(const Vector3& vector) const
 {
-    return Vector3();
+    return (this->getX() == vector.getX()) &&
+           (this->getY() == vector.getY()) &&
+           (this->getZ() == vector.getZ());
+}
+
+bool MMath::Vector3::operator!=(const Vector3& vector) const
+{
+ 
 }
 
 std::ostream& MMath::operator<<(std::ostream& os, Vector3& vectorValue)
